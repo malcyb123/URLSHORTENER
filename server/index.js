@@ -5,7 +5,7 @@ const URL = require("./models/url");
 const urlRoute = require("./routes/urlroute");
 
 const app = express();
-const PORT = 3005;
+const PORT = 3003;
 
 // CORS for Cross Origin Requests
 app.use(cors());
