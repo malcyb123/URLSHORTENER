@@ -5,7 +5,7 @@ import UrlShortener from './components/UrlShortener';
 function App() {
   return (
     <div className="App">
-      <h3>URL SHORTENER</h3>
+      <h4> URL SHORTENER <h4>
       <UrlShortener />
     </div>
   );
