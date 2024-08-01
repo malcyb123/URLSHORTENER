@@ -18,18 +18,10 @@ pipeline {
             }
         }
     }
-   post {
-        always {
-            emailext (
-                subject: "Pipeline ${currentBuild.currentResult}: ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
-                body: """
-                    Build #${env.BUILD_NUMBER} of ${env.JOB_NAME} completed with result: ${currentBuild.currentResult}.
-                    
-                    Check the build details at: ${env.BUILD_URL}
-                """,
-                to: 'mosaddekamallick@gmail.com'
-            )
+   stage('Send Test Email') {
+            steps {
+                emailext body: 'Jenkins email notification sent successfully!', subject: 'Checking Jenkins Email Notification', to: 'mosaddekamallick@gmail.com'
+            }
         }
-    }
 }
 
