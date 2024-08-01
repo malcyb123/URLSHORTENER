@@ -18,10 +18,18 @@ pipeline {
             }
         }
     }
-    post {
+   post {
         always {
-            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+            emailext (
+                subject: "Pipeline ${currentBuild.currentResult}: ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
+                body: """
+                    Build #${env.BUILD_NUMBER} of ${env.JOB_NAME} completed with result: ${currentBuild.currentResult}.
+                    
+                    Check the build details at: ${env.BUILD_URL}
+                """,
+                to: 'mosaddekamallick@gmail.com'
+            )
         }
     }
-    }
+}
 
