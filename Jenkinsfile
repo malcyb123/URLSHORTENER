@@ -17,11 +17,15 @@ pipeline {
                 echo 'Deploy App'
             }
         }
-    }
-   stage('Send Test Email') {
+        stage('Send Test Email') {
             steps {
-                emailext body: 'Jenkins email notification sent successfully!', subject: 'Checking Jenkins Email Notification', to: 'mosaddekamallick@gmail.com'
+                emailext (
+                    body: 'Jenkins email notification sent successfully!',
+                    subject: 'Checking Jenkins Email Notification',
+                    to: 'mosaddekamallick@gmail.com'
+                )
             }
         }
+    }
 }
 
